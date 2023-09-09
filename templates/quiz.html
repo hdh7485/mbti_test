@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>라플 심리 테스트</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+    <style>
+        /* 추가한 CSS 스타일 */
+        .question {
+            font-size: 24px;
+            /* 질문의 크기를 크게 설정 */
+            margin-top: 20px;
+            /* 아래쪽 간격을 늘립니다. */
+            margin-bottom: 20px;
+            /* 아래쪽 간격을 늘립니다. */
+        }
+
+        .btn-choice {
+            margin-bottom: 10px;
+            /* 선택 버튼 간격을 늘립니다. */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container align-items-center mx-auto text-center">
+        <h1 class="mt-5">라플 심리 테스트</h1>
+        <form method="POST" action="/next">
+            <div class="form-group">
+                <p class=question>{{ question_data['question'] }}</p>
+            </div>
+            {% for i in range(2) %}
+            <div class="form-group">
+                <button type="submit" class="btn btn-choice btn-primary btn-lg" name="answer"
+                    value="{{ question_data['answer'][i] }}">
+                    {{ question_data['choices'][i] }} </button>
+            </div>
+            {% endfor %}
+        </form>
+    </div>
+</body>
+
+</html>
