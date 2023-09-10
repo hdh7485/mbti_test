@@ -15,8 +15,8 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Set current date as env variable
-      run: echo "NOW=$(date +'%y%m%d')" >> $GITHUB_ENV
+      run: echo "TODAY=$(date +'%y%m%d')" >> $GITHUB_ENV
     - name: Build the Docker image
-      run: docker build -t hdh7485/mbti_test:$NOW . 
+      run: docker build -t hdh7485/mbti_test:$TODAY . 
     - name: Push the Docker image
-      run: docker push hdh7485/mbti_test:$NOW
+      run: docker push hdh7485/mbti_test:$TODAY
