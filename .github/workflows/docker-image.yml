@@ -11,11 +11,12 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    env:
-      DATE: $(date +%s)
+
     steps:
     - uses: actions/checkout@v3
+    - name: Set current date as env variable
+      run: echo "NOW=$(date +'%y%m%d')" >> $GITHUB_ENV
     - name: Build the Docker image
-      run: docker build -t hdh7485/mbti_test:$DATE . 
+      run: docker build -t hdh7485/mbti_test:$NOW . 
     - name: Push the Docker image
-      run: docker push hdh7485/mbti_test:$DATE
+      run: docker push hdh7485/mbti_test:$NOW
